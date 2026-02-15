@@ -17,16 +17,16 @@ def symlink_backup(og, bak):
             print(f"Error: {og} is a file but {name} is a directory")
             exit(1)
             return
-        shutil.copy2(og, backup)
-        print(f"Backup {og} -> {backup}")
+        shutil.copy2(og, bak)
+        print(f"Backup {og} -> {bak}")
         delete(og)
     elif os.path.isdir(og):
         if os.path.isfile(name):
             print(f"Error: {og} is a directory but {name} is a file")
             exit(1)
             return
-        shutil.copytree(og, backup)
-        print(f"Backup {og}/ -> {backup}/")
+        shutil.copytree(og, bak)
+        print(f"Backup {og}/ -> {bak}/")
         shutil.rmtree(og)
 
 def symlink_to_home(name):
