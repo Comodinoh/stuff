@@ -1,3 +1,9 @@
 .emacs|symlink
 .emacs.local|symlink
 .config/nvim|symlink
+.config/rofi|symlink
+.config/polybar|symlink
+.config/i3|symlink
+.config/gtk-3.0|symlink
+.config/qt5ct|symlink
+.config/Kvantum|symlink
