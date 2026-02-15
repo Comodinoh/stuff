@@ -2,6 +2,7 @@ local opt = vim.opt
 
 vim.g.have_nerd_font = true
 
+opt.clipboard = "unnamedplus"
 opt.relativenumber = true
 opt.number = true
 opt.cursorline = true

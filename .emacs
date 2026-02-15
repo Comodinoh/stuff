@@ -18,7 +18,7 @@
 (require 'multiple-cursors)
 (multiple-cursors-mode 1)
 
-(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-12"))
+(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-13"))
 
 (add-to-list 'load-path ".emacs.local/simpc-mode")
 
