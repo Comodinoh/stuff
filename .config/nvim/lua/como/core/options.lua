@@ -9,10 +9,13 @@ opt.cursorline = true
 
 opt.smartindent = true
 opt.breakindent = true
-opt.tabstop = 2
-opt.shiftwidth = 2
+opt.tabstop = 4
+opt.shiftwidth = 4
 opt.shiftround = true
 opt.expandtab = true
+
+opt.hlsearch = false
+opt.incsearch = true
 
 opt.wrap = false
 

@@ -110,12 +110,10 @@ return {
 						local server = servers[server_name] or {}
 
 						server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-						require("lspconfig")[server_name].setup(server)
+						vim.lsp.configs[server].setup()
 					end,
 				},
 			})
-
-			require("lspconfig").c3_lsp.setup({})
 		end,
 	},
 
@@ -224,7 +222,7 @@ return {
 			vim.treesitter.language.register("c3", { "c3", "c3i" })
 		end,
 		config = function()
-			local configs = require("nvim-treesitter.configs")
+			local configs = require("nvim-treesitter.config")
 			configs.setup({
 				ensure_installed = {
 					"bash",
@@ -246,7 +244,7 @@ return {
 				indent = { enable = true },
 			})
 
-			local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+			local parser_config = require("nvim-treesitter.parsers")
 			parser_config.c3 = {
 				install_info = {
 					url = "https://github.com/c3lang/tree-sitter-c3.git", -- local path or git repo
