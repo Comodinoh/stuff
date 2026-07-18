@@ -47,12 +47,30 @@ vim.pack.add({
 })
 
 require 'mini.pick'.setup()
-require 'oil'.setup()
+require 'oil'.setup({
+    view_options = {
+        show_hidden = true,
+    },
+    keymaps = {
+        ["<c-h>"] = {
+            "actions.toggle_hidden",
+            mode = 'n',
+        },
+        ['<leader>:'] = {
+            'actions.open_cmdline',
+            opts = {
+                shorten_path = true,
+                modify = ':h',
+            },
+        },
+    }
+})
 
 vim.keymap.set('n', '<leader>f', MiniPick.builtin.files)
 vim.keymap.set('n', '<leader>h', MiniPick.builtin.help)
 vim.keymap.set('n', '<leader>t', MiniPick.builtin.buffers)
 vim.keymap.set('n', '<leader>p', require('oil').open)
+-- vim.keymap.set('n', '<c-h>', require('oil').toggle_hidden)
 
 vim.keymap.set('n', '<a-Up>', '<c-w><Up>')
 vim.keymap.set('n', '<a-Right>', '<c-w><Right>')
