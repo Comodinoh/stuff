@@ -44,6 +44,8 @@ vim.pack.add({
     {src = 'https://github.com/navarasu/onedark.nvim'},
     {src = 'https://github.com/echasnovski/mini.pick'},
     {src = 'https://github.com/stevearc/oil.nvim'},
+    {src = 'https://github.com/blazkowolf/gruber-darker.nvim'},
+    {src = 'https://github.com/scottmckendry/cyberdream.nvim.git'}
 })
 
 require 'mini.pick'.setup()
@@ -119,5 +121,9 @@ require 'onedark'.setup({
         keywords = 'bold',
     }
 })
-require 'onedark'.load()
+require 'gruber-darker'.setup({bold = true})
+require 'cyberdream'.setup({
+    italic_comments = true,
+})
 
+vim.cmd.colorscheme('cyberdream')
