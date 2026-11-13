@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "autoclose.nvim": {
+      "rev": "bcad8e84d9cd78ba73433cb396b68e489af11e31",
+      "src": "https://github.com/m4xshen/autoclose.nvim"
+    },
     "cyberdream.nvim": {
       "rev": "b9cc88378b776f33d3ea77164716f37c3f13ef72",
       "src": "https://github.com/scottmckendry/cyberdream.nvim.git"

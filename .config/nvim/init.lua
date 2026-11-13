@@ -45,8 +45,11 @@ vim.pack.add({
     {src = 'https://github.com/echasnovski/mini.pick'},
     {src = 'https://github.com/stevearc/oil.nvim'},
     {src = 'https://github.com/blazkowolf/gruber-darker.nvim'},
-    {src = 'https://github.com/scottmckendry/cyberdream.nvim.git'}
+    {src = 'https://github.com/scottmckendry/cyberdream.nvim.git'},
+    {src = 'https://github.com/m4xshen/autoclose.nvim'},
 })
+
+require 'autoclose'.setup()
 
 require 'mini.pick'.setup()
 require 'oil'.setup({
@@ -89,6 +92,14 @@ vim.keymap.set('n', '<leader>y', '"+y')
 vim.keymap.set('v', "<leader>'", "c''<Esc>P")
 vim.keymap.set('v', "<leader>\"", "c\"\"<Esc>P")
 
+vim.filetype.add({
+    extension = {
+        hs = "haskell",
+        ebnf = "ebnf",
+        spice = "spice",
+    }
+})
+
 vim.lsp.config.lua_ls = {
     cmd = {"lua-language-server"},
     filetypes = {"lua"},
@@ -101,17 +112,51 @@ vim.lsp.config.lua_ls = {
         }
     },
 }
+vim.lsp.config.rust_analyzer = {
+    cmd = {"rust-analyzer"},
+    filetypes = {"rust"}
+}
+vim.lsp.config.tinymist = {
+    cmd = {"tinymist"},
+    filetypes = {"typst"},
+}
 
-
-vim.lsp.enable({"lua_ls"})
+vim.lsp.enable({"lua_ls", "rust_analyzer", "tinymist"})
 
 vim.treesitter.language.add('odin')
+vim.treesitter.language.add('haskell')
+vim.treesitter.language.add('ebnf')
+vim.treesitter.language.add('spice')
+vim.treesitter.language.register('haskell', 'haskell')
 vim.treesitter.language.register('odin', 'odin')
+vim.treesitter.language.register('ebnf', 'ebnf')
+vim.treesitter.language.register('spice', 'spice')
 
 vim.api.nvim_create_autocmd('FileType', {
   pattern = { 'odin' },
   callback = function() vim.treesitter.start() end,
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'haskell' },
+  callback = function() vim.treesitter.start() end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'ebnf' },
+  callback = function() vim.treesitter.start() end,
+})
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = { 'spice' },
+  callback = function() vim.treesitter.start() end,
+})
+
+-- vim.api.nvim_set_hl(0, '@string.special.grammar', { link = '@string.regex' })
+-- vim.api.nvim_set_hl(0, '@symbol.grammar.pascal', { link = '@type' })
+-- vim.api.nvim_set_hl(0, '@symbol.grammar.camel', { link = '@property' })
+-- vim.api.nvim_set_hl(0, '@symbol.grammar.upper', { link = '@constant' })
+-- vim.api.nvim_set_hl(0, '@symbol.grammar.lower', { link = '@parameter' })
 
 require 'onedark'.setup({
     style = 'warmer',
@@ -121,9 +166,10 @@ require 'onedark'.setup({
         keywords = 'bold',
     }
 })
+
 require 'gruber-darker'.setup({bold = true})
 require 'cyberdream'.setup({
     italic_comments = true,
 })
 
-vim.cmd.colorscheme('cyberdream')
+vim.cmd.colorscheme('onedark')

@@ -1,7 +1,11 @@
+;; -*- lexical-binding: nil; -*-
 (setq custom-file "~/.emacs.custom.el")
 (load custom-file)
 
 (menu-bar-mode -1)
+
+
+(setq ring-bell-function 'ignore)
 (tool-bar-mode -1)
 (xclip-mode 1)
 (ido-mode 1)
@@ -18,10 +22,8 @@
 (require 'multiple-cursors)
 (multiple-cursors-mode 1)
 
-(add-to-list 'default-frame-alist '(font . "Iosevka Nerd Font-13"))
-
+(add-to-list 'default-frame-alist '(font . "Hack-13"))
 (add-to-list 'load-path ".emacs.local/simpc-mode")
-
 (require 'simpc-mode)
 
 (add-to-list 'auto-mode-alist '("\\.[hc]\\(pp\\)?\\'" . simpc-mode))
@@ -35,6 +37,4 @@
 ;; and `package-pinned-packages`. Most users will not need or want to do this.
 ;;(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/") t)
 (package-initialize)
-
-
-
+(put 'upcase-region 'disabled nil)
